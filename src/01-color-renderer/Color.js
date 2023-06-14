@@ -1,4 +1,4 @@
-export default function Color ({ hex, name }) {
+function Color ({ hex, name }) {
   return (
     <div
       className='color-square' style={{ backgroundColor: hex }}
@@ -7,3 +7,5 @@ export default function Color ({ hex, name }) {
     </div>
   )
 }
+
+export default Color;
