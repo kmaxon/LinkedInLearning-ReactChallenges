@@ -1,7 +1,19 @@
 import { useEffect, useState } from 'react'
 
 export default function ScoreKeeper () {
-  const [score, setScore] = useState(0)
+  const [score, setScore] = useState(JSON.parse(localStorage.getItem('score')));
+
+  useEffect(() => {
+    localStorage.setItem('score', JSON.stringify(score));
+  }, [score])
+
+// how to use useEffect() for a getItem call from local storage, i think?
+  // useEffect(() => {
+  //   const storedScore = JSON.parse(localStorage.getItem('score'));
+  //   if (storedScore) {
+  //     setScore(storedScore);
+  //   }
+  // }, []);
 
   return (
     <div>
