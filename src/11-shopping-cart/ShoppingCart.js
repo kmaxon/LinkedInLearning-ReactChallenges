@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState } from 'react';
 
 const items = [{
   name: 'apple',
@@ -24,23 +24,22 @@ function ShoppingCart () {
       setCart([...cart, item]);
     } else if (item.quantity >= 1) {
       item.quantity += 1;
-      const newCart = items.filter(item => item.quantity >= 1)
-      setCart(newCart);
-      
-      }
-    console.log(cart)
+      const newCart = items.filter(item => item.quantity >= 1);
+      setCart(newCart);  
+    };
+
     let newTotal = 0;
     for (let i = 0; i < items.length; i++) {
-      newTotal += (items[i].quantity * items[i].price)
-    }
+      newTotal += (items[i].quantity * items[i].price);
+    };
     setTotal(newTotal.toFixed(2))
-  }
+  };
 
   function clearButton() {
     setCart([]);
     setTotal(0);
     items.map(item => item.quantity = 0)
-  }
+  };
   
   return (
     <div>
@@ -76,7 +75,7 @@ function ShoppingCart () {
         <button onClick={() => clearButton()}>Clear</button>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ShoppingCart
+export default ShoppingCart;
