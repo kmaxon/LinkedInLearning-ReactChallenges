@@ -35,6 +35,28 @@ function ShoppingCart () {
     setTotal(newTotal.toFixed(2))
   };
 
+  function minusButton(item) {
+    item.quantity -= 1;
+    const newCart = items.filter(item => item.quantity >= 1);
+    setCart(newCart);
+    let newTotal = 0;
+    for (let i = 0; i < items.length; i++) {
+      newTotal += (items[i].quantity * items[i].price);
+    };
+    setTotal(newTotal.toFixed(2)) 
+  }
+
+  function plusButton(item) {
+    item.quantity += 1;
+    const newCart = items.filter(item => item.quantity >= 1);
+    setCart(newCart); 
+    let newTotal = 0;
+    for (let i = 0; i < items.length; i++) {
+      newTotal += (items[i].quantity * items[i].price);
+    };
+    setTotal(newTotal.toFixed(2))
+  }
+
   function clearButton() {
     setCart([]);
     setTotal(0);
@@ -61,9 +83,9 @@ function ShoppingCart () {
             <div key={item.name}>
               <h3>{item.name}</h3>
               <p>
-                <button>-</button>
+                <button onClick={() => minusButton(item)}>-</button>
                 {item.quantity}
-                <button>+</button>
+                <button onClick={() => plusButton(item)}>+</button>
               </p>
               <p>Subtotal: ${(item.quantity * item.price).toFixed(2)}</p>
             </div>
